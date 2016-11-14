@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    
+</head>
+<body>
+    <div id="app"></div>
+
+
+    <script src="react-15.3.1/build/react.min.js"></script>
+    <script src="react-15.3.1/build/react-dom.min.js"></script>
+    <script src="http://static.runoob.com/assets/react/browser.min.js"></script>
+    <script type="text/babel">
+        var LikeBtn = React.createClass({
+            getInitialState: function(){
+                return {
+                    liked: false
+                };
+            },
+            handleClick: function(event){
+                this.setState({
+                    liked: !this.state.liked
+                });
+            },
+            render: function(){
+                var heart = this.state.liked ? 'liked' : 'disliked';
+                return (
+                    <p onClick={this.handleClick}>click me <b>{heart}</b> will change color.</p>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <LikeBtn/>,
+            document.getElementById('app')
+        );
+    </script>  
+</body>
+</html>
