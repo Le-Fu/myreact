@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>state</title>
+    <style>
+        html{
+            font-size: 20px;
+        }
+        body{
+            background-color: #39D1B4;
+        }
+        .container {
+            width: 60%;            
+            margin: 0 auto;
+        }
+        .container h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>react state</h1>
+        <p>Any time that you call this.setState, this.setState AUTOMATICALLY calls render as soon as the state has changed.
+
+            Think of this.setState as actually being two things: this.setState, immediately followed by render.
+
+            That is why you can't call this.setState from inside of the render function! this.setState automatically calls render. If render calls this.setState, you will create an infinite loop.
+        </p>
+    </div>
+</body>
+</html>
