@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo9</title>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	
+	<script type="text/babel">
+		var Hello = React.createClass({
+			getInitialState: function  () {
+				return {
+					opacity: 1
+				};
+			},
+			componentDidMount: function () {
+				var opacity = this.state.opacity;
+				this.timer = setInterval(function () {
+					opacity -= 0.05;
+					
+					if (opacity <= 0.1) {opacity=1;}
+
+					this.setState({	
+						opacity: opacity,
+					});
+					
+				}.bind(this), 100)
+
+			},
+			render: function () {
+				var opacity = this.state.opacity;
+				return (
+					<div style={{opacity: this.state.opacity}}>
+						I know that {this.props.message}
+					</div>
+				);
+			}
+		});
+	
+		ReactDOM.render(
+			<Hello message="Simon is awesome!" />,
+			document.getElementById('example')
+		);
+	</script>
+</body>
+</html>
+	

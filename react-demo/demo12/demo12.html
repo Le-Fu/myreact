@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo12</title>
+
+	<script src="../build/jquery.min.js"></script>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	
+	<script type="text/babel">
+		var Hello = React.createClass({
+			getInitialState: function  () {
+				return {
+					username: '',
+					lastGistUrl: '',
+				};
+			},
+			componentDidMount: function () {
+				var sourceUrl = this.props.sourceUrl;
+				$.get(sourceUrl, function (res) {
+					var lastGist = res[0];
+					if (this.isMounted()) {
+						this.setState({
+							username: lastGist.owner.login,
+							lastGistUrl: lastGist.html_url
+						})
+					}
+				}.bind(this))
+
+			},
+			render: function () {
+				return (
+					<div>
+						{this.state.username}'s last gist. <a href={this.state.lastGistUrl}>{this.state.lastGistUrl}</a>
+					</div>	
+				);
+			}
+		});
+	
+		ReactDOM.render(
+			<Hello sourceUrl="https://api.github.com/users/octocat/gists" />,
+			document.getElementById('example')
+		);
+	</script>
+</body>
+</html>
+	
